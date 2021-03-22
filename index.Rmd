@@ -17,20 +17,54 @@ library(icon)
 library(ggplot2)
 ```
 
-## Esempio veloce
+## Pillole di codice & scripts
 
-### Iris dataset point
+---
 
-```{r echo=TRUE}
-ggplot(iris)+
-  geom_point(aes(x = Sepal.Length, y = Sepal.Width, color = Species))+
-  theme_bw()
+### Caricare un .csv
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+# write.csv2 use sep=";" and dec="," as default
+write.csv2(iris, "iris_it.csv", row.names = FALSE) #per salcarlo senza colonna numerica
+
+write.csv(iris, "iris_en.csv", row.names = FALSE) #per salcarlo senza colonna numerica
 ```
 
-### Iris dataset boxplot
+A seconda del formato numerico del .csv, si hanno due opzioni:
 
-```{r echo=TRUE}
-ggplot(iris)+
-  geom_boxplot(aes(x = Species, y = Sepal.Width, fill = Species))+
-  theme_bw()
+1) Formato numerico **italiano**
+    - ";" come separatore di campo (colonne) e "," come separatore decimale
+2) Formato numerico **inglese**
+    - "," come separatore di campo e "." come separatore decimale
+
+Nel primo caso possiamo usare il comando **read.csv2**, il quale usa di default il formato numerico italiano, nel secondo caso possiamo usare il comando **read.csv2**:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+dat_it <- read.csv2("iris_it.csv", header = TRUE)
+
+dat_en <- read.csv("iris_en.csv", header = TRUE)
 ```
+
+(**N.B.** I due .csv sono stati creati con le due diverse formattazioni sopra citate, in modo tale da avere in R il medesimo dataset ma utilizzando due comandi differenti)
+
+Successivamente possiamo dare una breve occhiata al nostro dataset appena caricato da .csv. Il comando **head()** e **tail()** permettono, senza parametri aggiuntivi (come mostrato), di mostrare velocemente in R console rispettivamente la parte iniziale e finale di un dataset.
+
+Parte iniziale di **dat_it**:
+
+```{r}
+head(dat_it) # per la parte iniziale
+```
+
+Parte finale di **dat_it**:
+
+```{r}
+tail(dat_it) # per la parte finale
+```
+
+Nel caso invece volessimo mostrare in console l'intero contenuto del dataset, basterà richiamare il nome del dataset. In questo caso **dat_it** e correre in R. Il risultato sarà una lista di tutte le 150 righe, comprese di valori e colonne, che non sarà mostrato qui per motivi di spazio.
+
+```r
+dat_it
+```
+

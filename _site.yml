@@ -18,9 +18,14 @@ navbar:
   left:
     - icon: fa-home
       href: index.html
-    #- text: "About me"
+      
+    - text: "PCA"
     #  icon: fa-info
-    #  href: about_me.html
+      href: page_2.html
+      
+    #- text: "Tabelle"
+    #  icon: fa-info
+    #  href: page_2.html
 output:
   html_document:
     theme: cosmo
