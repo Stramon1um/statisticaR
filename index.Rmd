@@ -34,8 +34,23 @@ A seconda del formato numerico del .csv, si hanno due opzioni:
 
 1) Formato numerico **italiano**
     - ";" come separatore di campo (colonne) e "," come separatore decimale
+    
+    ```r
+"Sepal.Length";"Sepal.Width";"Petal.Length";"Petal.Width";"Species"
+5,1;3,5;1,4;0,2;"setosa"
+4,9;3;1,4;0,2;"setosa"
+4,7;3,2;1,3;0,2;"setosa"
+```
+    
 2) Formato numerico **inglese**
     - "," come separatore di campo e "." come separatore decimale
+    
+    ```r
+"Sepal.Length","Sepal.Width","Petal.Length","Petal.Width","Species"
+5.1,3.5,1.4,0.2,"setosa"
+4.9,3,1.4,0.2,"setosa"
+4.7,3.2,1.3,0.2,"setosa"
+```
 
 Nel primo caso possiamo usare il comando **read.csv2**, il quale usa di default il formato numerico italiano, nel secondo caso possiamo usare il comando **read.csv2**:
 

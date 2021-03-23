@@ -413,11 +413,19 @@ div.tocify {
 <li>Formato numerico <strong>italiano</strong>
 <ul>
 <li>“;” come separatore di campo (colonne) e “,” come separatore decimale</li>
-</ul></li>
+</ul>
+<pre class="r"><code>&quot;Sepal.Length&quot;;&quot;Sepal.Width&quot;;&quot;Petal.Length&quot;;&quot;Petal.Width&quot;;&quot;Species&quot;
+5,1;3,5;1,4;0,2;&quot;setosa&quot;
+4,9;3;1,4;0,2;&quot;setosa&quot;
+4,7;3,2;1,3;0,2;&quot;setosa&quot;</code></pre></li>
 <li>Formato numerico <strong>inglese</strong>
 <ul>
 <li>“,” come separatore di campo e “.” come separatore decimale</li>
-</ul></li>
+</ul>
+<pre class="r"><code>&quot;Sepal.Length&quot;,&quot;Sepal.Width&quot;,&quot;Petal.Length&quot;,&quot;Petal.Width&quot;,&quot;Species&quot;
+5.1,3.5,1.4,0.2,&quot;setosa&quot;
+4.9,3,1.4,0.2,&quot;setosa&quot;
+4.7,3.2,1.3,0.2,&quot;setosa&quot;</code></pre></li>
 </ol>
 <p>Nel primo caso possiamo usare il comando <strong>read.csv2</strong>, il quale usa di default il formato numerico italiano, nel secondo caso possiamo usare il comando <strong>read.csv2</strong>:</p>
 <pre class="r"><code>dat_it &lt;- read.csv2(&quot;iris_it.csv&quot;, header = TRUE)
