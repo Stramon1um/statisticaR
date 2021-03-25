@@ -52,7 +52,7 @@ A seconda del formato numerico del .csv, si hanno due opzioni:
 4.7,3.2,1.3,0.2,"setosa"
 ```
 
-Nel primo caso possiamo usare il comando **read.csv2**, il quale usa di default il formato numerico italiano, nel secondo caso possiamo usare il comando **read.csv**:
+Nel primo caso possiamo usare il comando ```read.csv2```, il quale usa di default il formato numerico italiano, nel secondo caso possiamo usare il comando ```read.csv```:
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 
@@ -63,21 +63,21 @@ dat_en <- read.csv("iris_en.csv", header = TRUE)
 
 (**N.B.** I due .csv sono stati creati con le due diverse formattazioni sopra citate, in modo tale da avere in R il medesimo dataset ma utilizzando due comandi differenti)
 
-Successivamente possiamo dare una breve occhiata al nostro dataset appena caricato da .csv. Il comando **head()** e **tail()** permettono, senza parametri aggiuntivi (come mostrato), di mostrare velocemente in R console rispettivamente la parte iniziale e finale di un dataset.
+Successivamente possiamo dare una breve occhiata al nostro dataset appena caricato da .csv. Il comando ```head()``` e ```tail()``` permettono, senza opzioni aggiuntive (come mostrato), di mostrare velocemente in R console rispettivamente la parte iniziale e finale di un dataset.
 
-Parte iniziale di **dat_it**:
+Parte iniziale di ```dat_it```:
 
 ```{r}
 head(dat_it) # per la parte iniziale
 ```
 
-Parte finale di **dat_it**:
+Parte finale di ```dat_it```:
 
 ```{r}
 tail(dat_it) # per la parte finale
 ```
 
-Nel caso invece volessimo mostrare in console l'intero contenuto del dataset, basterà richiamare il nome del dataset. In questo caso **dat_it** e correre in R. Il risultato sarà una lista di tutte le 150 righe, comprese di valori e colonne, che non sarà mostrato qui per motivi di spazio.
+Nel caso invece volessimo mostrare in console l'intero contenuto del dataset, basterà richiamare il nome del dataset. In questo caso ```dat_it``` e correre in R. Il risultato sarà una lista di tutte le 150 righe, comprese di valori e colonne, che non sarà mostrato qui per motivi di spazio.
 
 ```r
 dat_it
