@@ -84,7 +84,7 @@ dat_it
 ```
 ---
 
-### Determinare il tipo di dati di un dataframe
+### Ispezionare un dataframe
 
 Una volta caricato il nostro dataframe, possiamo passare ad ispezionare la tipologia di dati in esso contenuti. Uno dei metodi più veloci è tramite il comando ```str()```:
 
