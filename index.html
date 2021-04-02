@@ -453,6 +453,23 @@ dat_en &lt;- read.csv(&quot;iris_en.csv&quot;, header = TRUE)</code></pre>
 ## 150          5.9         3.0          5.1         1.8 virginica</code></pre>
 <p>Nel caso invece volessimo mostrare in console l’intero contenuto del dataset, basterà richiamare il nome del dataset. In questo caso <code>dat_it</code> e correre in R. Il risultato sarà una lista di tutte le 150 righe, comprese di valori e colonne, che non sarà mostrato qui per motivi di spazio.</p>
 <pre class="r"><code>dat_it</code></pre>
+<hr />
+</div>
+<div id="determinare-il-tipo-di-dati-di-un-dataframe" class="section level3">
+<h3>Determinare il tipo di dati di un dataframe</h3>
+<p>Una volta caricato il nostro dataframe, possiamo passare ad ispezionare la tipologia di dati in esso contenuti. Uno dei metodi più veloci è tramite il comando <code>str()</code>:</p>
+<pre class="r"><code>str(dat_it)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<p>Come mostrato dall’output del comando, il nostro dataframe è composto da 150 righe e 5 colonne, delle quali quattro contenenti dati di tipo numerico e una di tipo fattoriale (spesso riferite come variabili categoriche).</p>
+<p>Una valida alternativa a <code>str()</code> è il comando <code>sapply()</code>, andando ad aggiungere l’opzione <strong>class</strong>:</p>
+<pre class="r"><code>sapply(dat_it, class)</code></pre>
+<pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
+##    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;     &quot;factor&quot;</code></pre>
 </div>
 </div>
 

@@ -82,4 +82,21 @@ Nel caso invece volessimo mostrare in console l'intero contenuto del dataset, ba
 ```r
 dat_it
 ```
+---
+
+### Determinare il tipo di dati di un dataframe
+
+Una volta caricato il nostro dataframe, possiamo passare ad ispezionare la tipologia di dati in esso contenuti. Uno dei metodi più veloci è tramite il comando ```str()```:
+
+```{r}
+str(dat_it)
+```
+
+Come mostrato dall'output del comando, il nostro dataframe è composto da 150 righe e 5 colonne, delle quali quattro contenenti dati di tipo numerico e una di tipo fattoriale (spesso riferite come variabili categoriche).
+
+Una valida alternativa a ```str()``` è il comando ```sapply()```, andando ad aggiungere l'opzione **class**:
+
+```{r}
+sapply(dat_it, class)
+```
 
