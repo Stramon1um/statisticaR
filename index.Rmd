@@ -100,3 +100,36 @@ Una valida alternativa a ```str()``` è il comando ```sapply()```, andando ad ag
 sapply(dat_it, class)
 ```
 
+---
+
+### Modificare nomi colonne
+
+Controllate tutte le varie informazioni ottenute dal nostro dataframe, potremo ora procedere ad una veloce modifca dei nomi delle colonne nel caso preferissimo avere nomi più semplici o più specifici senza tuttavia modificare il .csv originale caricato.
+
+Tra i diversi metodi, di base R ci fornisce il comando ```colnames```, il quale può essere utilizzando in 3 modi:
+
+1) inserendo un vettore contente quanti nomi quante le colonne presenti nel nostro dataframe. Consigliato ad esempio quando vorremmo modificare più di un colonna in maniera rapida. (**N.B.** nel caso si inserissero meno nomi rispetto al numero di colonne totali, le colonne rimanenti veranno etichettate con NA):
+
+    ```{r}
+colnames(dat_it) <- c("Sepal_Length","Sepal_Width","Petal_Length","Petal_Width","Species_Iris")
+
+head(dat_it)
+```
+
+2) specificando la colonna tramite il suo numero corrispondente, dove ```1``` sarà per la prima colonna e così via; in questo modo possiamo selettivamente modificare una colonna lasciando intatto tutto il resto. In questo caso però è chiaro che occorrerà conoscere la posizione della colonna all'interno del nostro dataframe:
+
+    ```{r}
+colnames(dat_it)[5] <- "Species"
+
+head(dat_it)
+```
+
+3) specificando la colonna da modificare tramite il suo attuale nome. Questo metodo ad esempio consente rapidamente di modificare una specifica colonna situata in un dataframe ricco di colonne, senza saperne la posizione:
+
+    ```{r}
+colnames(dat_it)[which(colnames(dat_it) == "Species")] <- "Species_Iris_2"
+
+head(dat_it)
+```
+
+

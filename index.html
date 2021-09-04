@@ -470,6 +470,47 @@ dat_en &lt;- read.csv(&quot;iris_en.csv&quot;, header = TRUE)</code></pre>
 <pre class="r"><code>sapply(dat_it, class)</code></pre>
 <pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
 ##    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;     &quot;factor&quot;</code></pre>
+<hr />
+</div>
+<div id="modificare-nomi-colonne" class="section level3">
+<h3>Modificare nomi colonne</h3>
+<p>Controllate tutte le varie informazioni ottenute dal nostro dataframe, potremo ora procedere ad una veloce modifca dei nomi delle colonne nel caso preferissimo avere nomi più semplici o più specifici senza tuttavia modificare il .csv originale caricato.</p>
+<p>Tra i diversi metodi, di base R ci fornisce il comando <code>colnames</code>, il quale può essere utilizzando in 3 modi:</p>
+<ol style="list-style-type: decimal">
+<li><p>inserendo un vettore contente quanti nomi quante le colonne presenti nel nostro dataframe. Consigliato ad esempio quando vorremmo modificare più di un colonna in maniera rapida. (<strong>N.B.</strong> nel caso si inserissero meno nomi rispetto al numero di colonne totali, le colonne rimanenti veranno etichettate con NA):</p>
+<pre class="r"><code>colnames(dat_it) &lt;- c(&quot;Sepal_Length&quot;,&quot;Sepal_Width&quot;,&quot;Petal_Length&quot;,&quot;Petal_Width&quot;,&quot;Species_Iris&quot;)
+
+head(dat_it)</code></pre>
+<pre><code>##   Sepal_Length Sepal_Width Petal_Length Petal_Width Species_Iris
+## 1          5.1         3.5          1.4         0.2       setosa
+## 2          4.9         3.0          1.4         0.2       setosa
+## 3          4.7         3.2          1.3         0.2       setosa
+## 4          4.6         3.1          1.5         0.2       setosa
+## 5          5.0         3.6          1.4         0.2       setosa
+## 6          5.4         3.9          1.7         0.4       setosa</code></pre></li>
+<li><p>specificando la colonna tramite il suo numero corrispondente, dove <code>1</code> sarà per la prima colonna e così via; in questo modo possiamo selettivamente modificare una colonna lasciando intatto tutto il resto. In questo caso però è chiaro che occorrerà conoscere la posizione della colonna all’interno del nostro dataframe:</p>
+<pre class="r"><code>colnames(dat_it)[5] &lt;- &quot;Species&quot;
+
+head(dat_it)</code></pre>
+<pre><code>##   Sepal_Length Sepal_Width Petal_Length Petal_Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre></li>
+<li><p>specificando la colonna da modificare tramite il suo attuale nome. Questo metodo ad esempio consente rapidamente di modificare una specifica colonna situata in un dataframe ricco di colonne, senza saperne la posizione:</p>
+<pre class="r"><code>colnames(dat_it)[which(colnames(dat_it) == &quot;Species&quot;)] &lt;- &quot;Species_Iris_2&quot;
+
+head(dat_it)</code></pre>
+<pre><code>##   Sepal_Length Sepal_Width Petal_Length Petal_Width Species_Iris_2
+## 1          5.1         3.5          1.4         0.2         setosa
+## 2          4.9         3.0          1.4         0.2         setosa
+## 3          4.7         3.2          1.3         0.2         setosa
+## 4          4.6         3.1          1.5         0.2         setosa
+## 5          5.0         3.6          1.4         0.2         setosa
+## 6          5.4         3.9          1.7         0.4         setosa</code></pre></li>
+</ol>
 </div>
 </div>
 
