@@ -19,6 +19,8 @@ library(ggplot2)
 
 ## Pillole di codice & scripts
 
+Ultimo aggiornamento: `r format(Sys.time(), "%a %d %b - %R")`
+
 ---
 
 ### Caricare un .csv
