@@ -132,4 +132,85 @@ colnames(dat_it)[which(colnames(dat_it) == "Species")] <- "Species_Iris_2"
 head(dat_it)
 ```
 
+---
+
+### Escludere colonne e/o righe
+
+Nel caso avessimo bisogno solo di mantenere solo determinate colonne e/o righe di un ben più ampio dataframe, questo è possibile utilizzando dei semplici comandi. Dato un dataframe, in esso sarà possibile specificare quali colonne, righe o colonne+righe mantenere; tuttavia è consigliato creare un nuovo dataframe così da non modificare quello di partenza.
+
+Ad esempio, diciamo che vogliamo solo le colonne di ```iris``` relative a ```Sepal```, esludendo quelle per ```Petal```:
+
+```{r}
+dat_it_sepal <- iris[,c(-3,-4)]
+
+head(dat_it_sepal)
+```
+
+L'aggiunta delle parentesi quadre dopo il nome del dataframe, ```iris[X,Y]```, ci permette di specificare le righe in ```X``` e le colonne in ```Y```. Nell'esempio sopra, aggiunendo un segno meno andremo ad esludere le colonne specificate.
+
+Allo stesso modo è possibile inserire degli intervalli, come in questo esempio:
+
+```{r}
+dat_it_solo_sepal <- iris[,1:2]
+
+head(dat_it_solo_sepal)
+```
+
+Oppure utilizzare gli intervalli nel caso si dovesse specificare un certo numero di righe:
+
+```{r}
+dat_it_tre_righe_solo_sepal <- iris[1:3,1:2]
+
+head(dat_it_tre_righe_solo_sepal)
+```
+
+---
+
+### Creare un Subset
+
+Il principio dietro alla creazione di un ```Subset``` di un dataframe non differisce molto da quello sopra riportato per l'esclusione selettiva di righe o colonne. Tuttavia, in termini di potenzialità e versatilità, *subsettare* porta con sè vantaggi non indifferenti, specie se occore applicare condizioni molto selettive nell'esclusione di dati.
+
+Ritornando a ``ìris``, mettiamo il caso che vogliamo solo considerare i dati relativi alla specie ```setosa```:
+
+```{r}
+iris_setosa <- subset(iris, Species == "setosa")
+
+head(iris_setosa)
+```
+
+oppure, considerare solo se ```Sepal.Length``` è maggiore di un certo numero:
+
+```{r}
+iris_sepal_maggiore <- subset(iris, Sepal.Length > 6)
+
+head(iris_sepal_maggiore)
+```
+
+o perfino una combinazione di determinate condizioni utilizzando operatori logici:
+
+```{r}
+iris_subset_versicolor_AND <- subset(iris, Sepal.Length > 6 & Species == "versicolor")
+
+head(iris_subset_versicolor_AND)
+```
+
+dove ```&``` indica l'operatore logico AND, il quale ammette solo che entrambe le condizioni siano contemporaneamente vere. L'operatore OR è invece richiamato con il simbolo ```|```, il quale ammette che almeno una delle condizione sia vera:
+
+```{r}
+iris_subset_OR <- subset(iris, Sepal.Length > 7 | Sepal.Width > 4)
+
+head(iris_subset_OR)
+```
+
+O escludendo rapidamente applicando l'operatore ```!=``` alias *diverso da*:
+
+```{r}
+iris_subset_diverso_setosa <- subset(iris, Species != "setosa" & Petal.Length > 6.4)
+
+head(iris_subset_diverso_setosa)
+```
+
+**N.B.** Anche nel caso di subset, è consigliabile creare un nuovo dataframe mantenendo intatto l'originale.
+
+---
 

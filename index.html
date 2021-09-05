@@ -511,6 +511,102 @@ head(dat_it)</code></pre>
 ## 5          5.0         3.6          1.4         0.2         setosa
 ## 6          5.4         3.9          1.7         0.4         setosa</code></pre></li>
 </ol>
+<hr />
+</div>
+<div id="escludere-colonne-eo-righe" class="section level3">
+<h3>Escludere colonne e/o righe</h3>
+<p>Nel caso avessimo bisogno solo di mantenere solo determinate colonne e/o righe di un ben più ampio dataframe, questo è possibile utilizzando dei semplici comandi. Dato un dataframe, in esso sarà possibile specificare quali colonne, righe o colonne+righe mantenere; tuttavia è consigliato creare un nuovo dataframe così da non modificare quello di partenza.</p>
+<p>Ad esempio, diciamo che vogliamo solo le colonne di <code>iris</code> relative a <code>Sepal</code>, esludendo quelle per <code>Petal</code>:</p>
+<pre class="r"><code>dat_it_sepal &lt;- iris[,c(-3,-4)]
+
+head(dat_it_sepal)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Species
+## 1          5.1         3.5  setosa
+## 2          4.9         3.0  setosa
+## 3          4.7         3.2  setosa
+## 4          4.6         3.1  setosa
+## 5          5.0         3.6  setosa
+## 6          5.4         3.9  setosa</code></pre>
+<p>L’aggiunta delle parentesi quadre dopo il nome del dataframe, <code>iris[X,Y]</code>, ci permette di specificare le righe in <code>X</code> e le colonne in <code>Y</code>. Nell’esempio sopra, aggiunendo un segno meno andremo ad esludere le colonne specificate.</p>
+<p>Allo stesso modo è possibile inserire degli intervalli, come in questo esempio:</p>
+<pre class="r"><code>dat_it_solo_sepal &lt;- iris[,1:2]
+
+head(dat_it_solo_sepal)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width
+## 1          5.1         3.5
+## 2          4.9         3.0
+## 3          4.7         3.2
+## 4          4.6         3.1
+## 5          5.0         3.6
+## 6          5.4         3.9</code></pre>
+<p>Oppure utilizzare gli intervalli nel caso si dovesse specificare un certo numero di righe:</p>
+<pre class="r"><code>dat_it_tre_righe_solo_sepal &lt;- iris[1:3,1:2]
+
+head(dat_it_tre_righe_solo_sepal)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width
+## 1          5.1         3.5
+## 2          4.9         3.0
+## 3          4.7         3.2</code></pre>
+<hr />
+</div>
+<div id="creare-un-subset" class="section level3">
+<h3>Creare un Subset</h3>
+<p>Il principio dietro alla creazione di un <code>Subset</code> di un dataframe non differisce molto da quello sopra riportato per l’esclusione selettiva di righe o colonne. Tuttavia, in termini di potenzialità e versatilità, <em>subsettare</em> porta con sè vantaggi non indifferenti, specie se occore applicare condizioni molto selettive nell’esclusione di dati.</p>
+<p>Ritornando a <code>ìris</code>, mettiamo il caso che vogliamo solo considerare i dati relativi alla specie <code>setosa</code>:</p>
+<pre class="r"><code>iris_setosa &lt;- subset(iris, Species == &quot;setosa&quot;)
+
+head(iris_setosa)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<p>oppure, considerare solo se <code>Sepal.Length</code> è maggiore di un certo numero:</p>
+<pre class="r"><code>iris_sepal_maggiore &lt;- subset(iris, Sepal.Length &gt; 6)
+
+head(iris_sepal_maggiore)</code></pre>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+## 51          7.0         3.2          4.7         1.4 versicolor
+## 52          6.4         3.2          4.5         1.5 versicolor
+## 53          6.9         3.1          4.9         1.5 versicolor
+## 55          6.5         2.8          4.6         1.5 versicolor
+## 57          6.3         3.3          4.7         1.6 versicolor
+## 59          6.6         2.9          4.6         1.3 versicolor</code></pre>
+<p>o perfino una combinazione di determinate condizioni utilizzando operatori logici:</p>
+<pre class="r"><code>iris_subset_versicolor_AND &lt;- subset(iris, Sepal.Length &gt; 6 &amp; Species == &quot;versicolor&quot;)
+
+head(iris_subset_versicolor_AND)</code></pre>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+## 51          7.0         3.2          4.7         1.4 versicolor
+## 52          6.4         3.2          4.5         1.5 versicolor
+## 53          6.9         3.1          4.9         1.5 versicolor
+## 55          6.5         2.8          4.6         1.5 versicolor
+## 57          6.3         3.3          4.7         1.6 versicolor
+## 59          6.6         2.9          4.6         1.3 versicolor</code></pre>
+<p>dove <code>&amp;</code> indica l’operatore logico AND, il quale ammette solo che entrambe le condizioni siano contemporaneamente vere. L’operatore OR è invece richiamato con il simbolo <code>|</code>, il quale ammette che almeno una delle condizione sia vera:</p>
+<pre class="r"><code>iris_subset_OR &lt;- subset(iris, Sepal.Length &gt; 7 | Sepal.Width &gt; 4)
+
+head(iris_subset_OR)</code></pre>
+<pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 16           5.7         4.4          1.5         0.4    setosa
+## 33           5.2         4.1          1.5         0.1    setosa
+## 34           5.5         4.2          1.4         0.2    setosa
+## 103          7.1         3.0          5.9         2.1 virginica
+## 106          7.6         3.0          6.6         2.1 virginica
+## 108          7.3         2.9          6.3         1.8 virginica</code></pre>
+<p>O escludendo rapidamente applicando l’operatore <code>!=</code> alias <em>diverso da</em>:</p>
+<pre class="r"><code>iris_subset_diverso_setosa &lt;- subset(iris, Species != &quot;setosa&quot; &amp; Petal.Length &gt; 6.4)
+
+head(iris_subset_diverso_setosa)</code></pre>
+<pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 106          7.6         3.0          6.6         2.1 virginica
+## 118          7.7         3.8          6.7         2.2 virginica
+## 119          7.7         2.6          6.9         2.3 virginica
+## 123          7.7         2.8          6.7         2.0 virginica</code></pre>
+<p><strong>N.B.</strong> Anche nel caso di subset, è consigliabile creare un nuovo dataframe mantenendo intatto l’originale.</p>
+<hr />
 </div>
 </div>
 
