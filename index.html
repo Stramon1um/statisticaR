@@ -405,7 +405,7 @@ div.tocify {
 
 <div id="pillole-di-codice-scripts" class="section level2">
 <h2>Pillole di codice &amp; scripts</h2>
-<p>Ultimo aggiornamento: Dom 05 Set - 17:41</p>
+<p>Ultimo aggiornamento: Mer 08 Set - 21:06</p>
 <hr />
 <div id="caricare-un-.csv" class="section level3">
 <h3>Caricare un .csv</h3>
@@ -608,6 +608,60 @@ head(iris_subset_diverso_setosa)</code></pre>
 ## 123          7.7         2.8          6.7         2.0 virginica</code></pre>
 <p><strong>N.B.</strong> Anche nel caso di subset, è consigliabile creare un nuovo dataframe mantenendo intatto l’originale.</p>
 <hr />
+</div>
+<div id="unire-dataframe" class="section level3">
+<h3>Unire dataframe</h3>
+<p>Può capitare di avere la necessità di unire due o più dataframe in un unico grande dataframe, e svolgere su di esso qualsivoglia analisi o elaborazione. Questa <em>fusione</em> può essere eseguita sia a livello di colonne con <code>cbind</code> sia a livello di righe con <code>rbind</code>. Unico prerequisito è quello di avere in tutti i dataframe da unire lo stesso numero di righe e colonne, rispettivamente. Ai fini della dimostrazione, creiamo due dataframe di dimensione 5x5 (righexcolonne) partendo da <code>iris</code>:</p>
+<pre class="r"><code>iris_1 &lt;- iris[1:5,]
+
+head(iris_1)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa</code></pre>
+<pre class="r"><code>iris_2 &lt;- iris[6:10,]
+
+head(iris_2)</code></pre>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa</code></pre>
+<p>Ora procederemo a alla loro unione con <code>cbind</code>, affiancandoli a livello delle colonne e creando così un nuovo dataframe da 5x10:</p>
+<pre class="r"><code>iris_cbind &lt;- cbind(iris_1, iris_2)
+
+head(iris_cbind)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Sepal.Length
+## 1          5.1         3.5          1.4         0.2  setosa          5.4
+## 2          4.9         3.0          1.4         0.2  setosa          4.6
+## 3          4.7         3.2          1.3         0.2  setosa          5.0
+## 4          4.6         3.1          1.5         0.2  setosa          4.4
+## 5          5.0         3.6          1.4         0.2  setosa          4.9
+##   Sepal.Width Petal.Length Petal.Width Species
+## 1         3.9          1.7         0.4  setosa
+## 2         3.4          1.4         0.3  setosa
+## 3         3.4          1.5         0.2  setosa
+## 4         2.9          1.4         0.2  setosa
+## 5         3.1          1.5         0.1  setosa</code></pre>
+<p>In alternativa, possiamo anche unirli a livello di righe con <code>rbind</code>, ottenendo un nuovo dataframe da 10x5:</p>
+<pre class="r"><code>iris_rbind &lt;- rbind(iris_1, iris_2)
+
+head(iris_rbind, 15) # il parametro 15 aggiuntivo è per dimostrare che sebbene vogliamo a schermo 15 righe, ne avremo solo 10 perchè non ne sono presenti altre</code></pre>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa</code></pre>
+<p>Nel caso il numero di colonne o righe fosse diverso tra i dataframe, ovviamente a seconda del comando utilizzato, riceveremo un messaggio di errore.</p>
 </div>
 </div>
 

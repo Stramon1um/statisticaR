@@ -216,3 +216,34 @@ head(iris_subset_diverso_setosa)
 
 ---
 
+### Unire dataframe
+
+Può capitare di avere la necessità di unire due o più dataframe in un unico grande dataframe, e svolgere su di esso qualsivoglia analisi o elaborazione. Questa *fusione* può essere eseguita sia a livello di colonne con ```cbind``` sia a livello di righe con ```rbind```. Unico prerequisito è quello di avere in tutti i dataframe da unire lo stesso numero di righe e colonne, rispettivamente. Ai fini della dimostrazione, creiamo due dataframe di dimensione 5x5 (righexcolonne) partendo da ```iris```:
+
+```{r}
+iris_1 <- iris[1:5,]
+
+head(iris_1)
+
+iris_2 <- iris[6:10,]
+
+head(iris_2)
+```
+
+Ora procederemo a alla loro unione con ```cbind```, affiancandoli a livello delle colonne e creando così un nuovo dataframe da 5x10:
+
+```{r}
+iris_cbind <- cbind(iris_1, iris_2)
+
+head(iris_cbind)
+```
+
+In alternativa, possiamo anche unirli a livello di righe con ```rbind```, ottenendo un nuovo dataframe da 10x5:
+
+```{r}
+iris_rbind <- rbind(iris_1, iris_2)
+
+head(iris_rbind, 15) # il parametro 15 aggiuntivo è per dimostrare che sebbene vogliamo a schermo 15 righe, ne avremo solo 10 perchè non ne sono presenti altre
+```
+
+Nel caso il numero di colonne o righe fosse diverso tra i dataframe, ovviamente a seconda del comando utilizzato, riceveremo un messaggio di errore.
