@@ -23,8 +23,6 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -37,22 +35,98 @@
   ul.task-list{list-style: none;}
     </style>
 
+
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -405,7 +479,7 @@ div.tocify {
 
 <div id="pillole-di-codice-scripts" class="section level2">
 <h2>Pillole di codice &amp; scripts</h2>
-<p>Ultimo aggiornamento: Mer 08 Set - 21:06</p>
+<p>Ultimo aggiornamento: Gio 16 Set - 20:25</p>
 <hr />
 <div id="caricare-un-.csv" class="section level3">
 <h3>Caricare un .csv</h3>
@@ -415,27 +489,27 @@ div.tocify {
 <ul>
 <li>“;” come separatore di campo (colonne) e “,” come separatore decimale</li>
 </ul>
-<pre class="r"><code>&quot;Sepal.Length&quot;;&quot;Sepal.Width&quot;;&quot;Petal.Length&quot;;&quot;Petal.Width&quot;;&quot;Species&quot;
-5,1;3,5;1,4;0,2;&quot;setosa&quot;
-4,9;3;1,4;0,2;&quot;setosa&quot;
-4,7;3,2;1,3;0,2;&quot;setosa&quot;</code></pre></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="st">&quot;Sepal.Length&quot;</span>;<span class="st">&quot;Sepal.Width&quot;</span>;<span class="st">&quot;Petal.Length&quot;</span>;<span class="st">&quot;Petal.Width&quot;</span>;<span class="st">&quot;Species&quot;</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="dv">5</span>,<span class="dv">1</span>;<span class="dv">3</span>,<span class="dv">5</span>;<span class="dv">1</span>,<span class="dv">4</span>;<span class="dv">0</span>,<span class="dv">2</span>;<span class="st">&quot;setosa&quot;</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="dv">4</span>,<span class="dv">9</span>;<span class="dv">3</span>;<span class="dv">1</span>,<span class="dv">4</span>;<span class="dv">0</span>,<span class="dv">2</span>;<span class="st">&quot;setosa&quot;</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="dv">4</span>,<span class="dv">7</span>;<span class="dv">3</span>,<span class="dv">2</span>;<span class="dv">1</span>,<span class="dv">3</span>;<span class="dv">0</span>,<span class="dv">2</span>;<span class="st">&quot;setosa&quot;</span></a></code></pre></div></li>
 <li>Formato numerico <strong>inglese</strong>
 <ul>
 <li>“,” come separatore di campo e “.” come separatore decimale</li>
 </ul>
-<pre class="r"><code>&quot;Sepal.Length&quot;,&quot;Sepal.Width&quot;,&quot;Petal.Length&quot;,&quot;Petal.Width&quot;,&quot;Species&quot;
-5.1,3.5,1.4,0.2,&quot;setosa&quot;
-4.9,3,1.4,0.2,&quot;setosa&quot;
-4.7,3.2,1.3,0.2,&quot;setosa&quot;</code></pre></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="st">&quot;Sepal.Length&quot;</span>,<span class="st">&quot;Sepal.Width&quot;</span>,<span class="st">&quot;Petal.Length&quot;</span>,<span class="st">&quot;Petal.Width&quot;</span>,<span class="st">&quot;Species&quot;</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="fl">5.1</span>,<span class="fl">3.5</span>,<span class="fl">1.4</span>,<span class="fl">0.2</span>,<span class="st">&quot;setosa&quot;</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="fl">4.9</span>,<span class="dv">3</span>,<span class="fl">1.4</span>,<span class="fl">0.2</span>,<span class="st">&quot;setosa&quot;</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="fl">4.7</span>,<span class="fl">3.2</span>,<span class="fl">1.3</span>,<span class="fl">0.2</span>,<span class="st">&quot;setosa&quot;</span></a></code></pre></div></li>
 </ol>
 <p>Nel primo caso possiamo usare il comando <code>read.csv2</code>, il quale usa di default il formato numerico italiano, nel secondo caso possiamo usare il comando <code>read.csv</code>:</p>
-<pre class="r"><code>dat_it &lt;- read.csv2(&quot;iris_it.csv&quot;, header = TRUE)
-
-dat_en &lt;- read.csv(&quot;iris_en.csv&quot;, header = TRUE)</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">dat_it &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;iris_it.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">dat_en &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;iris_en.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p>(<strong>N.B.</strong> I due .csv sono stati creati con le due diverse formattazioni sopra citate, in modo tale da avere in R il medesimo dataset ma utilizzando due comandi differenti)</p>
 <p>Successivamente possiamo dare una breve occhiata al nostro dataset appena caricato da .csv. Il comando <code>head()</code> e <code>tail()</code> permettono, senza opzioni aggiuntive (come mostrato), di mostrare velocemente in R console rispettivamente la parte iniziale e finale di un dataset.</p>
 <p>Parte iniziale di <code>dat_it</code>:</p>
-<pre class="r"><code>head(dat_it) # per la parte iniziale</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">head</span>(dat_it) <span class="co"># per la parte iniziale</span></a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -444,7 +518,7 @@ dat_en &lt;- read.csv(&quot;iris_en.csv&quot;, header = TRUE)</code></pre>
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
 <p>Parte finale di <code>dat_it</code>:</p>
-<pre class="r"><code>tail(dat_it) # per la parte finale</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">tail</span>(dat_it) <span class="co"># per la parte finale</span></a></code></pre></div>
 <pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
 ## 145          6.7         3.3          5.7         2.5 virginica
 ## 146          6.7         3.0          5.2         2.3 virginica
@@ -453,13 +527,13 @@ dat_en &lt;- read.csv(&quot;iris_en.csv&quot;, header = TRUE)</code></pre>
 ## 149          6.2         3.4          5.4         2.3 virginica
 ## 150          5.9         3.0          5.1         1.8 virginica</code></pre>
 <p>Nel caso invece volessimo mostrare in console l’intero contenuto del dataset, basterà richiamare il nome del dataset. In questo caso <code>dat_it</code> e correre in R. Il risultato sarà una lista di tutte le 150 righe, comprese di valori e colonne, che non sarà mostrato qui per motivi di spazio.</p>
-<pre class="r"><code>dat_it</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">dat_it</a></code></pre></div>
 <hr />
 </div>
 <div id="ispezionare-un-dataframe" class="section level3">
 <h3>Ispezionare un dataframe</h3>
 <p>Una volta caricato il nostro dataframe, possiamo passare ad ispezionare la tipologia di dati in esso contenuti. Uno dei metodi più veloci è tramite il comando <code>str()</code>:</p>
-<pre class="r"><code>str(dat_it)</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">str</span>(dat_it)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
 ##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
 ##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
@@ -468,7 +542,7 @@ dat_en &lt;- read.csv(&quot;iris_en.csv&quot;, header = TRUE)</code></pre>
 ##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 <p>Come mostrato dall’output del comando, il nostro dataframe è composto da 150 righe e 5 colonne, delle quali quattro contenenti dati di tipo numerico e una di tipo fattoriale (spesso riferite come variabili categoriche).</p>
 <p>Una valida alternativa a <code>str()</code> è il comando <code>sapply()</code>, andando ad aggiungere l’opzione <strong>class</strong>:</p>
-<pre class="r"><code>sapply(dat_it, class)</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">sapply</span>(dat_it, class)</a></code></pre></div>
 <pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
 ##    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;     &quot;factor&quot;</code></pre>
 <hr />
@@ -479,9 +553,9 @@ dat_en &lt;- read.csv(&quot;iris_en.csv&quot;, header = TRUE)</code></pre>
 <p>Tra i diversi metodi, di base R ci fornisce il comando <code>colnames</code>, il quale può essere utilizzando in 3 modi:</p>
 <ol style="list-style-type: decimal">
 <li><p>inserendo un vettore contente quanti nomi quante le colonne presenti nel nostro dataframe. Consigliato ad esempio quando vorremmo modificare più di un colonna in maniera rapida. (<strong>N.B.</strong> nel caso si inserissero meno nomi rispetto al numero di colonne totali, le colonne rimanenti veranno etichettate con NA):</p>
-<pre class="r"><code>colnames(dat_it) &lt;- c(&quot;Sepal_Length&quot;,&quot;Sepal_Width&quot;,&quot;Petal_Length&quot;,&quot;Petal_Width&quot;,&quot;Species_Iris&quot;)
-
-head(dat_it)</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">colnames</span>(dat_it) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sepal_Length&quot;</span>,<span class="st">&quot;Sepal_Width&quot;</span>,<span class="st">&quot;Petal_Length&quot;</span>,<span class="st">&quot;Petal_Width&quot;</span>,<span class="st">&quot;Species_Iris&quot;</span>)</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="kw">head</span>(dat_it)</a></code></pre></div>
 <pre><code>##   Sepal_Length Sepal_Width Petal_Length Petal_Width Species_Iris
 ## 1          5.1         3.5          1.4         0.2       setosa
 ## 2          4.9         3.0          1.4         0.2       setosa
@@ -490,9 +564,9 @@ head(dat_it)</code></pre>
 ## 5          5.0         3.6          1.4         0.2       setosa
 ## 6          5.4         3.9          1.7         0.4       setosa</code></pre></li>
 <li><p>specificando la colonna tramite il suo numero corrispondente, dove <code>1</code> sarà per la prima colonna e così via; in questo modo possiamo selettivamente modificare una colonna lasciando intatto tutto il resto. In questo caso però è chiaro che occorrerà conoscere la posizione della colonna all’interno del nostro dataframe:</p>
-<pre class="r"><code>colnames(dat_it)[5] &lt;- &quot;Species&quot;
-
-head(dat_it)</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">colnames</span>(dat_it)[<span class="dv">5</span>] &lt;-<span class="st"> &quot;Species&quot;</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="kw">head</span>(dat_it)</a></code></pre></div>
 <pre><code>##   Sepal_Length Sepal_Width Petal_Length Petal_Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -501,9 +575,9 @@ head(dat_it)</code></pre>
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre></li>
 <li><p>specificando la colonna da modificare tramite il suo attuale nome. Questo metodo ad esempio consente rapidamente di modificare una specifica colonna situata in un dataframe ricco di colonne, senza saperne la posizione:</p>
-<pre class="r"><code>colnames(dat_it)[which(colnames(dat_it) == &quot;Species&quot;)] &lt;- &quot;Species_Iris_2&quot;
-
-head(dat_it)</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">colnames</span>(dat_it)[<span class="kw">which</span>(<span class="kw">colnames</span>(dat_it) <span class="op">==</span><span class="st"> &quot;Species&quot;</span>)] &lt;-<span class="st"> &quot;Species_Iris_2&quot;</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="kw">head</span>(dat_it)</a></code></pre></div>
 <pre><code>##   Sepal_Length Sepal_Width Petal_Length Petal_Width Species_Iris_2
 ## 1          5.1         3.5          1.4         0.2         setosa
 ## 2          4.9         3.0          1.4         0.2         setosa
@@ -518,9 +592,9 @@ head(dat_it)</code></pre>
 <h3>Escludere colonne e/o righe</h3>
 <p>Nel caso avessimo bisogno solo di mantenere solo determinate colonne e/o righe di un ben più ampio dataframe, questo è possibile utilizzando dei semplici comandi. Dato un dataframe, in esso sarà possibile specificare quali colonne, righe o colonne+righe mantenere; tuttavia è consigliato creare un nuovo dataframe così da non modificare quello di partenza.</p>
 <p>Ad esempio, diciamo che vogliamo solo le colonne di <code>iris</code> relative a <code>Sepal</code>, esludendo quelle per <code>Petal</code>:</p>
-<pre class="r"><code>dat_it_sepal &lt;- iris[,c(-3,-4)]
-
-head(dat_it_sepal)</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">dat_it_sepal &lt;-<span class="st"> </span>iris[,<span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">4</span>)]</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="kw">head</span>(dat_it_sepal)</a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Species
 ## 1          5.1         3.5  setosa
 ## 2          4.9         3.0  setosa
@@ -530,9 +604,9 @@ head(dat_it_sepal)</code></pre>
 ## 6          5.4         3.9  setosa</code></pre>
 <p>L’aggiunta delle parentesi quadre dopo il nome del dataframe, <code>iris[X,Y]</code>, ci permette di specificare le righe in <code>X</code> e le colonne in <code>Y</code>. Nell’esempio sopra, aggiunendo un segno meno andremo ad esludere le colonne specificate.</p>
 <p>Allo stesso modo è possibile inserire degli intervalli, come in questo esempio:</p>
-<pre class="r"><code>dat_it_solo_sepal &lt;- iris[,1:2]
-
-head(dat_it_solo_sepal)</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">dat_it_solo_sepal &lt;-<span class="st"> </span>iris[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="kw">head</span>(dat_it_solo_sepal)</a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width
 ## 1          5.1         3.5
 ## 2          4.9         3.0
@@ -541,9 +615,9 @@ head(dat_it_solo_sepal)</code></pre>
 ## 5          5.0         3.6
 ## 6          5.4         3.9</code></pre>
 <p>Oppure utilizzare gli intervalli nel caso si dovesse specificare un certo numero di righe:</p>
-<pre class="r"><code>dat_it_tre_righe_solo_sepal &lt;- iris[1:3,1:2]
-
-head(dat_it_tre_righe_solo_sepal)</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">dat_it_tre_righe_solo_sepal &lt;-<span class="st"> </span>iris[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="kw">head</span>(dat_it_tre_righe_solo_sepal)</a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width
 ## 1          5.1         3.5
 ## 2          4.9         3.0
@@ -554,9 +628,9 @@ head(dat_it_tre_righe_solo_sepal)</code></pre>
 <h3>Creare un Subset</h3>
 <p>Il principio dietro alla creazione di un <code>Subset</code> di un dataframe non differisce molto da quello sopra riportato per l’esclusione selettiva di righe o colonne. Tuttavia, in termini di potenzialità e versatilità, <em>subsettare</em> porta con sè vantaggi non indifferenti, specie se occore applicare condizioni molto selettive nell’esclusione di dati.</p>
 <p>Ritornando a <code>ìris</code>, mettiamo il caso che vogliamo solo considerare i dati relativi alla specie <code>setosa</code>:</p>
-<pre class="r"><code>iris_setosa &lt;- subset(iris, Species == &quot;setosa&quot;)
-
-head(iris_setosa)</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">iris_setosa &lt;-<span class="st"> </span><span class="kw">subset</span>(iris, Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>)</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="kw">head</span>(iris_setosa)</a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -565,9 +639,9 @@ head(iris_setosa)</code></pre>
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
 <p>oppure, considerare solo se <code>Sepal.Length</code> è maggiore di un certo numero:</p>
-<pre class="r"><code>iris_sepal_maggiore &lt;- subset(iris, Sepal.Length &gt; 6)
-
-head(iris_sepal_maggiore)</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">iris_sepal_maggiore &lt;-<span class="st"> </span><span class="kw">subset</span>(iris, Sepal.Length <span class="op">&gt;</span><span class="st"> </span><span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="kw">head</span>(iris_sepal_maggiore)</a></code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
 ## 51          7.0         3.2          4.7         1.4 versicolor
 ## 52          6.4         3.2          4.5         1.5 versicolor
@@ -576,9 +650,9 @@ head(iris_sepal_maggiore)</code></pre>
 ## 57          6.3         3.3          4.7         1.6 versicolor
 ## 59          6.6         2.9          4.6         1.3 versicolor</code></pre>
 <p>o perfino una combinazione di determinate condizioni utilizzando operatori logici:</p>
-<pre class="r"><code>iris_subset_versicolor_AND &lt;- subset(iris, Sepal.Length &gt; 6 &amp; Species == &quot;versicolor&quot;)
-
-head(iris_subset_versicolor_AND)</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">iris_subset_versicolor_AND &lt;-<span class="st"> </span><span class="kw">subset</span>(iris, Sepal.Length <span class="op">&gt;</span><span class="st"> </span><span class="dv">6</span> <span class="op">&amp;</span><span class="st"> </span>Species <span class="op">==</span><span class="st"> &quot;versicolor&quot;</span>)</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="kw">head</span>(iris_subset_versicolor_AND)</a></code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
 ## 51          7.0         3.2          4.7         1.4 versicolor
 ## 52          6.4         3.2          4.5         1.5 versicolor
@@ -587,9 +661,9 @@ head(iris_subset_versicolor_AND)</code></pre>
 ## 57          6.3         3.3          4.7         1.6 versicolor
 ## 59          6.6         2.9          4.6         1.3 versicolor</code></pre>
 <p>dove <code>&amp;</code> indica l’operatore logico AND, il quale ammette solo che entrambe le condizioni siano contemporaneamente vere. L’operatore OR è invece richiamato con il simbolo <code>|</code>, il quale ammette che almeno una delle condizione sia vera:</p>
-<pre class="r"><code>iris_subset_OR &lt;- subset(iris, Sepal.Length &gt; 7 | Sepal.Width &gt; 4)
-
-head(iris_subset_OR)</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">iris_subset_OR &lt;-<span class="st"> </span><span class="kw">subset</span>(iris, Sepal.Length <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span> <span class="op">|</span><span class="st"> </span>Sepal.Width <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="kw">head</span>(iris_subset_OR)</a></code></pre></div>
 <pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
 ## 16           5.7         4.4          1.5         0.4    setosa
 ## 33           5.2         4.1          1.5         0.1    setosa
@@ -598,9 +672,9 @@ head(iris_subset_OR)</code></pre>
 ## 106          7.6         3.0          6.6         2.1 virginica
 ## 108          7.3         2.9          6.3         1.8 virginica</code></pre>
 <p>O escludendo rapidamente applicando l’operatore <code>!=</code> alias <em>diverso da</em>:</p>
-<pre class="r"><code>iris_subset_diverso_setosa &lt;- subset(iris, Species != &quot;setosa&quot; &amp; Petal.Length &gt; 6.4)
-
-head(iris_subset_diverso_setosa)</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">iris_subset_diverso_setosa &lt;-<span class="st"> </span><span class="kw">subset</span>(iris, Species <span class="op">!=</span><span class="st"> &quot;setosa&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Petal.Length <span class="op">&gt;</span><span class="st"> </span><span class="fl">6.4</span>)</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="kw">head</span>(iris_subset_diverso_setosa)</a></code></pre></div>
 <pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
 ## 106          7.6         3.0          6.6         2.1 virginica
 ## 118          7.7         3.8          6.7         2.2 virginica
@@ -612,18 +686,18 @@ head(iris_subset_diverso_setosa)</code></pre>
 <div id="unire-dataframe" class="section level3">
 <h3>Unire dataframe</h3>
 <p>Può capitare di avere la necessità di unire due o più dataframe in un unico grande dataframe, e svolgere su di esso qualsivoglia analisi o elaborazione. Questa <em>fusione</em> può essere eseguita sia a livello di colonne con <code>cbind</code> sia a livello di righe con <code>rbind</code>. Unico prerequisito è quello di avere in tutti i dataframe da unire lo stesso numero di righe e colonne, rispettivamente. Ai fini della dimostrazione, creiamo due dataframe di dimensione 5x5 (righexcolonne) partendo da <code>iris</code>:</p>
-<pre class="r"><code>iris_1 &lt;- iris[1:5,]
-
-head(iris_1)</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">iris_<span class="dv">1</span> &lt;-<span class="st"> </span>iris[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,]</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="kw">head</span>(iris_<span class="dv">1</span>)</a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
 ## 3          4.7         3.2          1.3         0.2  setosa
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa</code></pre>
-<pre class="r"><code>iris_2 &lt;- iris[6:10,]
-
-head(iris_2)</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">iris_<span class="dv">2</span> &lt;-<span class="st"> </span>iris[<span class="dv">6</span><span class="op">:</span><span class="dv">10</span>,]</a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="kw">head</span>(iris_<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 6           5.4         3.9          1.7         0.4  setosa
 ## 7           4.6         3.4          1.4         0.3  setosa
@@ -631,9 +705,9 @@ head(iris_2)</code></pre>
 ## 9           4.4         2.9          1.4         0.2  setosa
 ## 10          4.9         3.1          1.5         0.1  setosa</code></pre>
 <p>Ora procederemo a alla loro unione con <code>cbind</code>, affiancandoli a livello delle colonne e creando così un nuovo dataframe da 5x10:</p>
-<pre class="r"><code>iris_cbind &lt;- cbind(iris_1, iris_2)
-
-head(iris_cbind)</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">iris_cbind &lt;-<span class="st"> </span><span class="kw">cbind</span>(iris_<span class="dv">1</span>, iris_<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb39-3" data-line-number="3"><span class="kw">head</span>(iris_cbind)</a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Sepal.Length
 ## 1          5.1         3.5          1.4         0.2  setosa          5.4
 ## 2          4.9         3.0          1.4         0.2  setosa          4.6
@@ -647,9 +721,9 @@ head(iris_cbind)</code></pre>
 ## 4         2.9          1.4         0.2  setosa
 ## 5         3.1          1.5         0.1  setosa</code></pre>
 <p>In alternativa, possiamo anche unirli a livello di righe con <code>rbind</code>, ottenendo un nuovo dataframe da 10x5:</p>
-<pre class="r"><code>iris_rbind &lt;- rbind(iris_1, iris_2)
-
-head(iris_rbind, 15) # il parametro 15 aggiuntivo è per dimostrare che sebbene vogliamo a schermo 15 righe, ne avremo solo 10 perchè non ne sono presenti altre</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">iris_rbind &lt;-<span class="st"> </span><span class="kw">rbind</span>(iris_<span class="dv">1</span>, iris_<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb41-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb41-3" data-line-number="3"><span class="kw">head</span>(iris_rbind, <span class="dv">15</span>) <span class="co"># il parametro 15 aggiuntivo è per dimostrare che sebbene vogliamo a schermo 15 righe, ne avremo solo 10 perchè non ne sono presenti altre</span></a></code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1           5.1         3.5          1.4         0.2  setosa
 ## 2           4.9         3.0          1.4         0.2  setosa
